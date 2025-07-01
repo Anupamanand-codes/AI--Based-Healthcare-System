@@ -29,14 +29,15 @@ function Navbar() {
 
       <div className="Links flex gap-10 p-2">
         <Dropdown
-          dropContents={<span className="text-lg font-normal">Services</span>}
+          dropContents={<span>Services</span>}
           items={[
-            "Virtual Consultations",
+            "Virtual Consultation",
             "Emergency Care",
             "Digital Prescriptions",
             "Health Monitoring",
             "Lab Tests",
-            "Medical Records"
+            "Medical Records",
+            "Wheelchair Control"
           ]}
         />
         

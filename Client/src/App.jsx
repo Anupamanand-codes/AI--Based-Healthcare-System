@@ -20,34 +20,52 @@ import Billing from './Components/Doctor/Billing';
 import Personalised from './Components/Personalised';
 import FreeDemo from './Components/FreeDemo';
 import RequestaDemo from './Components/RequestaDemo';
+import About from './Components/About';
+import Contact from './Components/Contact';
+import WheelchairControl from './Components/WheelchairControl/WheelchairControl';
 
 function App() {
   return (
     <div>
       <Navbar />
       <Routes>
-       
+        {/* Auth Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        
-        <Route path="/personalised" element={<Personalised />} />
+        {/* Service Routes */}
         <Route path="/virtual-consultations" element={<VirtualConsultation />} />
         <Route path="/emergency-care" element={<EmergencyCare />} />
         <Route path="/digital-prescriptions" element={<DigitalPrescriptions />} />
+        <Route path="/health-monitoring" element={<HealthMonitoring />} />
+        <Route path="/lab-tests" element={<LabTests />} />
+        <Route path="/medical-records" element={<MedicalRecords />} />
+        <Route path="/wheelchair-control" element={<WheelchairControl />} />
+
+        {/* Patient Routes */}
         <Route path="/appointments" element={<Appointments />} />
         <Route path="/find-doctors" element={<FindDoctors />} />
-        
-        
+        <Route path="/patient/medical-records" element={<PatientHealthRecords />} />
+        <Route path="/prescriptions" element={<PatientPrescriptions />} />
+
+        {/* Doctor Routes */}
         <Route path="/doctor/patient-management" element={<PatientManagement />} />
         <Route path="/doctor/schedule-management" element={<ScheduleManagement />} />
         <Route path="/doctor/video-consultation" element={<VideoConsultation />} />
         <Route path="/doctor/billing" element={<Billing />} />
 
+        {/* Other Routes */}
+        <Route path="/personalised" element={<Personalised />} />
         <Route path="/" element={<Navigate to="/personalised" />} />
-        
-        {/* Catch-all route - Important: Don't redirect to personalised */}
-        <Route path="*" element={<Navigate to="/login" />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/abdm" element={<Personalised />} />
+        <Route path="/forbussiness" element={<Personalised />} />
+        <Route path="/carrier" element={<Personalised />} />
+        <Route path="/reqdemo" element={<RequestaDemo />} />
+
+        {/* Catch all route - Don't redirect to login by default */}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </div>
   );

@@ -22,13 +22,37 @@ const Dropdown = ({ dropContents, items }) => {
   const handleItemClick = (item) => {
     setIsOpen(false);
     
-    // Special handling for different menu items
-    if (item === 'Book Appointment') {
-      navigate('/appointments');
+    // Handle Services dropdown items
+    if (dropContents.props.children === 'Services') {
+      switch(item) {
+        case 'Virtual Consultation':
+          navigate('/virtual-consultations');
+          break;
+        case 'Emergency Care':
+          navigate('/emergency-care');
+          break;
+        case 'Digital Prescriptions':
+          navigate('/digital-prescriptions');
+          break;
+        case 'Health Monitoring':
+          navigate('/health-monitoring');
+          break;
+        case 'Lab Tests':
+          navigate('/lab-tests');
+          break;
+        case 'Medical Records':
+          navigate('/medical-records');
+          break;
+        case 'Wheelchair Control':
+          navigate('/wheelchair-control');
+          break;
+        default:
+          navigate('/');
+      }
       return;
     }
 
-    // For Doctors menu handling
+    // Handle For Doctors dropdown
     if (dropContents.props.children === 'For Doctors') {
       switch(item) {
         case 'Patient Management':
@@ -49,7 +73,25 @@ const Dropdown = ({ dropContents, items }) => {
       return;
     }
 
-    // Handle other menu items
+    // Handle For Patients dropdown
+    if (dropContents.props.children === 'For Patients') {
+      switch(item) {
+        case 'Book Appointment':
+          navigate('/appointments');
+          break;
+        case 'Find Doctors':
+          navigate('/find-doctors');
+          break;
+        case 'Medical Records':
+          navigate('/patient/medical-records');
+          break;
+        default:
+          navigate('/');
+      }
+      return;
+    }
+
+    // Default navigation for other items
     const path = item.toLowerCase().replace(/\s+/g, '-');
     navigate(`/${path}`);
   };
